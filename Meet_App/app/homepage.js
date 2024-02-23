@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import { View, Image, TouchableOpacity, StyleSheet, Picker, Text, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 // Import your images for the app logo and buttons from the assets folder
@@ -9,10 +9,18 @@ import HeartIcon from '../assets/AdobeStock_heart_filled.png';
 import CalendarIcon from '../assets/AdobeStock_calendar.png';
 import ChatIcon from '../assets/AdobeStock_chat.png';
 import ProfileIcon from '../assets/AdobeStock_profile.png';
+import PlanEventImg from '../assets/plan_event.png';
+import FilterIcon from '../assets/AdobeStock_filter.png';
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 const Home = () => {
     const navigation = useNavigation();
-  
+    const [selectedCity, setSelectedCity] = useState('Chicago');
+    const [searchText, setSearchText] = useState('');
+
     return (
       <View style={styles.container}>
       {/* App Logo at the top center */}
@@ -21,7 +29,71 @@ const Home = () => {
           <Image source={MeetLogoGradient} style={styles.logo} />
         </View>
       </View>
+
+      {/* Displaying simple text "Chicago" */}
+      <View style={styles.cityContainer}>
+      <Text style={[styles.cityText, { alignSelf: 'flex-start' }]}>Chicago</Text>
+      </View>
+
+      {/* Search bar */}
+      <View style={styles.searchBarContainer}>
+        <TextInput
+          style={styles.searchBar}
+          placeholder="Search for events near you..."
+          value={searchText}
+          onChangeText={(text) => setSearchText(text)}
+        />
+      </View>
+
+       {/* Four smaller buttons */}
+      <View style={styles.smallButtonContainer}>
+        <TouchableOpacity style={[styles.smallButton]}>
+          <Text style={styles.smallButtonText}>Filter</Text>
+          <Image source={FilterIcon} style={styles.smallButtonIcon} />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[styles.smallButton]}>
+          <Text style={styles.smallButtonText}>Date</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[styles.smallButton]}>
+          <Text style={styles.smallButtonText}>Price</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[styles.smallButton]}>
+          <Text style={styles.smallButtonText}>Category</Text>
+        </TouchableOpacity>
+      </View>
+
+        {/* Texts below the four buttons */}
+      <View style={styles.EventInfoTextContainer}>
+        <Text style={styles.eventInfoTextLeft}>0 Events</Text>
+        <Text style={styles.eventInfoTextRight}>Sort by relevance</Text>
+      </View>
   
+
+      {/* Button below the search bar */}
+      <TouchableOpacity
+        style={styles.eventButton}
+        onPress={() => {
+          console.log('Plan Event button pressed');
+          // navigation.navigate('createEvent');
+        }}
+      >
+        <Image source={PlanEventImg} style={styles.eventButtonImage} />
+      </TouchableOpacity>
+
+      {/* Texts below the event button */}
+      <View style={styles.eventTextContainer}>
+        <Text style={styles.eventsHeader}>Events</Text>
+        <View style={styles.horizontalLine}></View>
+      </View>
+
+      {/* Text when there are no events */}
+      <View style={styles.eventListContainer}>
+        <Text style={styles.eventsError}>No events in your area</Text>
+      </View>
+
         {/* Five buttons at the bottom for app navigation */}
         <View style={styles.bottom}>
           <View style={styles.buttonContainer}>
@@ -44,7 +116,7 @@ const Home = () => {
               style={styles.navigationButton}
               onPress={() => navigation.navigate('home')}
             >
-              <Image source={CalendarIcon} style={styles.buttonIcon} />
+              <Image source={CalendarIcon} style={styles.buttonIcon} tintColor={'#79b8d3'} />
             </TouchableOpacity>
     
             <TouchableOpacity
@@ -62,7 +134,7 @@ const Home = () => {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.bottomBar}></View>
+        {/* <View style={styles.bottomBar}></View> */}
       </View>
     );
   };
@@ -83,11 +155,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: -20,
   },
-  bottomBar: {
-    backgroundColor: 'white',
-    height: 75, // Adjust the height of the bottom bar as needed
-    width: '100%',
-  },
 
   logoContainer: {
     alignItems: 'center',
@@ -97,6 +164,130 @@ const styles = StyleSheet.create({
     height: 125,
     resizeMode: 'contain',
     marginTop: 0,
+  },
+
+  cityContainer: {
+    marginTop: 10,
+    marginLeft: 10,
+    justifyContent: 'left',
+  },
+
+  cityText: {
+    fontSize: 36,
+    fontWeight: 'normal',
+    color: '#2a2a2a',
+    textAlign: 'left',
+    marginLeft: -180,
+  },
+
+  searchBarContainer: {
+    marginVertical: 10,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    borderColor: '#000',
+    overflow: 'hidden',
+    width: '95%',
+  },
+
+  searchBar: {
+    height: 40,
+    paddingHorizontal: 10,
+  },
+
+  smallButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginBottom: 20,
+    marginTop: 10,
+  },
+  smallButton: {
+    borderWidth: 2,
+    borderRadius: 15,
+    borderColor: '#aeb0b2',
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    marginHorizontal: 4,
+  },
+  smallButtonText: {
+    marginRight: 5,
+    fontSize: 12,
+  },
+  smallButtonIcon: {
+    width: 15,
+    height: 15,
+    resizeMode: 'cover',
+  },
+
+  EventInfoTextContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '95%',
+    marginHorizontal: 12,
+    marginBottom: 10,
+  },
+
+  eventInfoTextLeft: {
+    fontSize: 16,
+    color: '#2a2a2a',
+       marginTop: 5,
+  },
+
+  eventInfoTextRight: {
+    fontSize: 16,
+    color: '#2a2a2a',
+    marginTop: 5,
+  },
+
+  eventButton: {
+    alignItems: 'center',
+  },
+  eventButtonImage: {
+    width: 400,
+    height: 400,
+    resizeMode: 'contain',
+    marginTop: -100,
+  },
+
+  eventTextContainer: {
+    alignItems: 'center',
+  },
+
+  horizontalLine: {
+    borderColor: '#aeb0b2',
+    borderBottomWidth: 1,
+    width: '100%',  // Set to '100%' for full width
+    marginTop: 10,   // Adjust the marginTop as needed
+    marginBottom: 10, // Adjust the marginBottom as needed
+  },
+  
+  eventsHeader: {
+    fontSize: 22,
+    color: '#2a2a2a',
+    marginBottom: 10,
+    marginTop: -90,
+    textAlign: 'left',
+    marginLeft: -280,
+  },
+
+  eventListContainer: {
+    alignItems: 'center',
+  },
+  
+  eventsError: {
+    fontSize: 16,
+    color: '#aeb0b2',
+    marginTop: 10,
+  },
+
+  bottomBar: {
+    backgroundColor: 'white',
+    height: 75, // Adjust the height of the bottom bar as needed
+    width: '150%',
+    marginBottom: -20,
   },
 
   bottom: {

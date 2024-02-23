@@ -8,6 +8,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import createAcc from './app/createAcc';
 import login from './app/login';
 import homepage from './app/homepage';
+import profile from './app/profile';
+import TabContainer from './app/TabContainer';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +22,7 @@ export default function App() {
       <Stack.Screen name="createAcc" component={createAcc} />
       <Stack.Screen name="login" component={login} />
       <Stack.Screen name="homepage" component={homepage} />
+      <Stack.Screen name="profile" component={profile} />
       </Stack.Navigator>
     </NavigationContainer>
   );
