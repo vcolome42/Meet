@@ -87,9 +87,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     height: 75, // Adjust the height of the bottom bar as needed
     width: '100%',
-    borderRadius: 10,
-    overflow: 'hidden',
   },
+
   logoContainer: {
     alignItems: 'center',
   },
@@ -110,10 +109,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '100%',
     marginBottom: 20,
-    position: 'absolute',
-    bottom: 0,
   },
-
   navigationButton: {
     borderRadius: 10,
     overflow: 'hidden',
