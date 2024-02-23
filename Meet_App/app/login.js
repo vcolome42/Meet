@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import backButtonIcon from '../assets/AdobeStock_backbutton.png';
+import {LinearGradient} from 'expo-linear-gradient';
 
 const Login = () => {
   const navigation = useNavigation();
@@ -45,12 +46,16 @@ const Login = () => {
 
         {/* Next button */}
         <View style={styles.bottom}></View>
-        <TouchableOpacity
+        <LinearGradient
+          colors={['#79b8d3', '#67bac7']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
           style={styles.nextButton}
-          onPress={() => console.log('Next button pressed')}
         >
-          <Text style={styles.nextButtonText}>Next</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.nextButton} onPress={() => {console.log('Next butto pressed'); navigation.navigate('startUp');}}>
+            <Text style={styles.nextButtonText}>Next</Text>
+          </TouchableOpacity>
+        </LinearGradient>
       </View>
     </KeyboardAvoidingView>
   );
@@ -60,6 +65,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: '#eef1f7',
   },
   backButtonIcon: {
     height: 65,
@@ -74,6 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 36,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: '#2a2a2a',
   },
   inputContainer: {
     marginBottom: 20,
@@ -84,6 +91,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 8,
     height: 50,
+    fontSize: 18,
   },
 
   bottom: {
@@ -95,7 +103,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     width: '100%',
     height: 50,
-    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
