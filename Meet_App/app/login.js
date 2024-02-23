@@ -52,7 +52,7 @@ const Login = () => {
           end={{ x: 1, y: 0 }}
           style={styles.nextButton}
         >
-          <TouchableOpacity style={styles.nextButton} onPress={() => {console.log('Next butto pressed'); navigation.navigate('startUp');}}>
+          <TouchableOpacity style={styles.nextButton} onPress={() => {console.log('Next button pressed'); navigation.navigate('homepage');}}>
             <Text style={styles.nextButtonText}>Next</Text>
           </TouchableOpacity>
         </LinearGradient>
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     marginBottom: 60,
     marginLeft: -10,
     position: 'relative',
-    tintColor: '#2a2a2a',
+    tintColor: '#aeb0b2',
   },
   title: {
     fontSize: 36,
@@ -105,8 +105,8 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'relative',
   },
+  
   nextButtonText: {
     color: '#fff',
     fontSize: 16,

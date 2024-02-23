@@ -20,17 +20,18 @@ const taglines = [
 const AppMenu = () => {
   
   const navigation = useNavigation();
-  const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Cycle to the next tagline
-      setCurrentTaglineIndex((prevIndex) => (prevIndex + 1) % taglines.length);
-    }, 3000); // Change tagline every 3 seconds
+  // State to keep track of the current tagline index
+  // const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     // Cycle to the next tagline
+  //     setCurrentTaglineIndex((prevIndex) => (prevIndex + 1) % taglines.length);
+  //   }, 5000); // Change tagline every 3 seconds
 
-    return () => clearInterval(interval); // Cleanup interval on component unmount
-  }, []);
-
+  //   return () => clearInterval(interval); // Cleanup interval on component unmount
+  // }, []);
+  
   return (
     <ImageBackground source={BackgroundImage} style={styles.backgroundImage}>
       <View style={styles.container}>
@@ -40,7 +41,8 @@ const AppMenu = () => {
             source={MeetLogoWhite}
             style={styles.logo} 
           />
-          <Text style={styles.tagline}>{taglines[currentTaglineIndex]}</Text>
+          <Text style={styles.tagline}>Socializing{'\n'}made{'\n'}simple.</Text>
+          {/* <Text style={styles.tagline}>{taglines[currentTaglineIndex]}</Text> */}
         </View>
 
         {/* Text above the "Create Account" button */}
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textAlign: 'center',
     fontWeight: 'bold',
-    marginBottom: -150,
+    marginBottom: -250,
     marginLeft: 45,
     marginRight: 45,
   },

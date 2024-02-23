@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 // Import your new screen here
 import createAcc from './app/createAcc';
 import login from './app/login';
+import homepage from './app/homepage';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ export default function App() {
       <Stack.Screen name="startUp" component={startUp} />
       <Stack.Screen name="createAcc" component={createAcc} />
       <Stack.Screen name="login" component={login} />
+      <Stack.Screen name="homepage" component={homepage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
