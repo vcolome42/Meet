@@ -1,4 +1,6 @@
-// AppMenu.js
+// Screen to display login options for the user
+// The user can either create an account or sign in to an existing account
+// The user can also click on the "Trouble signing in?" link to get help with signing in
 
 import React from 'react';
 import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';

@@ -1,4 +1,4 @@
-// AppMenu.js
+
 
 import React from 'react';
 import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
