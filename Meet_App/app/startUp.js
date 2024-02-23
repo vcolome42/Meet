@@ -2,7 +2,7 @@
 // The user can either create an account or sign in to an existing account
 // The user can also click on the "Trouble signing in?" link to get help with signing in
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -12,9 +12,25 @@ import { useNavigation } from '@react-navigation/native';
 import MeetLogoWhite from '../assets/meet-logo-white.png';
 import BackgroundImage from '../assets/background-image.png';
 
+const taglines = [
+  'Socializing\nmade\nsimple.',
+  'Moshing\nmade\nmanageable.',
+]
+
 const AppMenu = () => {
   
   const navigation = useNavigation();
+  const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Cycle to the next tagline
+      setCurrentTaglineIndex((prevIndex) => (prevIndex + 1) % taglines.length);
+    }, 3000); // Change tagline every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
+
   return (
     <ImageBackground source={BackgroundImage} style={styles.backgroundImage}>
       <View style={styles.container}>
@@ -24,7 +40,7 @@ const AppMenu = () => {
             source={MeetLogoWhite}
             style={styles.logo} 
           />
-          <Text style={styles.tagline}>Moshing{'\n'}made{'\n'}manageable.</Text>
+          <Text style={styles.tagline}>{taglines[currentTaglineIndex]}</Text>
         </View>
 
         {/* Text above the "Create Account" button */}
