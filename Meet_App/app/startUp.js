@@ -35,11 +35,11 @@ const AppMenu = () => {
 
         {/* Buttons at the bottom */} 
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.createAccountButton} onPress={() => console.log('Create Account pressed')}>
+          <TouchableOpacity style={styles.createAccountButton} onPress={() => {console.log('Sign In pressed'); navigation.navigate('createAcc');}}>
             <Text style={styles.createAccountButtonText}>CREATE ACCOUNT</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.signInButton} onPress={() => {console.log('Sign In pressed'); navigation.navigate('createAcc');}}> 
+          <TouchableOpacity style={styles.signInButton} onPress={() => {console.log('Sign In pressed'); navigation.navigate('login');}}> 
             <Text style={styles.signInButtonText}>SIGN IN</Text>
           </TouchableOpacity>
 
