@@ -11,6 +11,10 @@ import ProfileIcon from '../assets/AdobeStock_profile.png';
 import PlanEventImg from '../assets/plan_event.png';
 import FilterIcon from '../assets/AdobeStock_filter.png';
 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
+
 const Home = () => {
     const navigation = useNavigation();
     const [selectedCity, setSelectedCity] = useState('Chicago');
@@ -18,7 +22,7 @@ const Home = () => {
 
     return (
       <View style={styles.container}>
-      {/* App Logo */}
+      {/* App Logo at the top center */}
       <View style={styles.topBar}>
         <View style={styles.logoContainer}>
           <Image source={MeetLogoGradient} style={styles.logo} />
@@ -26,7 +30,6 @@ const Home = () => {
       </View>
 
       {/* Displaying simple text "Chicago" */}
-      {/*Will change to a dropdown menu later*/} {/*TODO*/}
       <View style={styles.cityContainer}>
       <Text style={[styles.cityText, { alignSelf: 'flex-start' }]}>Chicago</Text>
       </View>
@@ -41,7 +44,7 @@ const Home = () => {
         />
       </View>
 
-       {/* Filter buttons */}
+       {/* Filters */}
       <View style={styles.smallButtonContainer}>
         <TouchableOpacity style={[styles.smallButton]}>
           <Text style={styles.smallButtonText}>Filter</Text>
@@ -61,14 +64,14 @@ const Home = () => {
         </TouchableOpacity>
       </View>
 
-        {/* Event stats & sorting */}
+        {/* Event count & sort */}
       <View style={styles.EventInfoTextContainer}>
         <Text style={styles.eventInfoTextLeft}>0 Events</Text>
         <Text style={styles.eventInfoTextRight}>Sort by relevance</Text>
       </View>
   
 
-      {/* Event button to create events */}
+      {/* Create events button */}
       <TouchableOpacity
         style={styles.eventButton}
         onPress={() => {
@@ -79,7 +82,7 @@ const Home = () => {
         <Image source={PlanEventImg} style={styles.eventButtonImage} />
       </TouchableOpacity>
 
-      {/* Explore section */}
+      {/* Explore page*/}
       <View style={styles.eventTextContainer}>
         <Text style={styles.eventsHeader}>Explore</Text>
         <View style={styles.horizontalLine}></View>
@@ -130,7 +133,7 @@ const Home = () => {
             </TouchableOpacity>
           </View>
         </View>
-        {/* <View style={styles.bottomBar}></View> */} {/*TODO: FIX SO THAT BUTTONS STAY AT BOTTOM*/}
+        {/* <View style={styles.bottomBar}></View> */}
       </View>
     );
   };
@@ -146,7 +149,7 @@ const styles = StyleSheet.create({
 
   topBar: {
     backgroundColor: 'white',
-    height: 100, // Adjust the height of the top bar as needed
+    height: 100,
     width: '150%',
     borderRadius: 10,
     marginTop: -20,
@@ -255,9 +258,9 @@ const styles = StyleSheet.create({
   horizontalLine: {
     borderColor: '#aeb0b2',
     borderBottomWidth: 1,
-    width: '100%',  // Set to '100%' for full width
-    marginTop: 10,   // Adjust the marginTop as needed
-    marginBottom: 10, // Adjust the marginBottom as needed
+    width: '100%',
+    marginTop: 10,
+    marginBottom: 10,
   },
   
   eventsHeader: {
@@ -281,7 +284,7 @@ const styles = StyleSheet.create({
 
   bottomBar: {
     backgroundColor: 'white',
-    height: 75, // Adjust the height of the bottom bar as needed
+    height: 75,
     width: '150%',
     marginBottom: -20,
   },
@@ -302,8 +305,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   buttonIcon: {
-    width: 40, // Adjust the width of the button icons as needed
-    height: 40, // Adjust the height of the button icons as needed
+    width: 40,
+    height: 40,
     resizeMode: 'cover',
     tintColor: '#aeb0b2',
   },

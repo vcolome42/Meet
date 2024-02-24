@@ -19,8 +19,8 @@ const Profile = () => {
           <Image source={MeetLogoGradient} style={styles.logo} />
         </View>
       </View>
-
-        {/* Log out button */}
+      
+      {/* Log out button */}
         <TouchableOpacity
         style={styles.logoutButton}
         onPress={() => navigation.navigate('startUp')}

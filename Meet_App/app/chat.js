@@ -20,6 +20,9 @@ const Chat = () => {
         </View>
       </View>
 
+      {/* Title */}
+      <Text style={styles.title}>Chat Page</Text>
+
       {/* Five buttons at the bottom for app navigation */}
       <View style={styles.bottom}>
         <View style={styles.buttonContainer}>
@@ -90,22 +93,12 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
 
-  logoutButton: {
-    borderWidth: 2,
-    borderColor: 'red',
-    borderRadius: 10,
-    padding: 10,
-    backgroundColor: 'transparent',
-    marginBottom: 20,
-    marginTop: 250,
-    width: '80%',
-  },
-
-  logoutText: {
-    color: 'red',
-    fontSize: 18,
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
     textAlign: 'center',
-  },
+    marginTop: 20,
+    },
 
   bottomBar: {
     backgroundColor: 'white',
