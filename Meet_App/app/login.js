@@ -3,13 +3,12 @@ import {
   View,
   Text,
   Image,
-  ImageBackground,
   TouchableOpacity,
   StyleSheet,
   TextInput,
   KeyboardAvoidingView,
-  Platform,
-} from 'react-native';
+  Platform,} from 'react-native';
+  
 import { useNavigation } from '@react-navigation/native';
 import backButtonIcon from '../assets/AdobeStock_backbutton.png';
 import {LinearGradient} from 'expo-linear-gradient';
@@ -31,7 +30,6 @@ const Login = () => {
           }}
           style={styles.backButtonIcon}
         >
-          {/* You can use an arrow icon or any other suitable icon */}
           <Image source={backButtonIcon} style={styles.backButtonIcon} />
         </TouchableOpacity>
 

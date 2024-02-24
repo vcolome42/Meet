@@ -12,7 +12,6 @@ import profile from './app/profile';
 import chat from './app/chat';
 import map from './app/map';
 import saved from './app/saved';
-import TabContainer from './app/TabContainer';
 
 
 const Stack = createNativeStackNavigator();
