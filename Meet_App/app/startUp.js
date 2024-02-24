@@ -21,7 +21,7 @@ const AppMenu = () => {
   
   const navigation = useNavigation();
 
-  // State to keep track of the current tagline index
+  {/* TODO: Create text that cycles through different taglines, fading in & out with each one*/}
   // const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
   // useEffect(() => {
   //   const interval = setInterval(() => {
@@ -35,7 +35,7 @@ const AppMenu = () => {
   return (
     <ImageBackground source={BackgroundImage} style={styles.backgroundImage}>
       <View style={styles.container}>
-        {/* App Logo and Tagline at the top */}
+        {/* App Logo and Tagline */}
         <View style={styles.logoContainer}> 
           <Image
             source={MeetLogoWhite}
@@ -45,13 +45,13 @@ const AppMenu = () => {
           {/* <Text style={styles.tagline}>{taglines[currentTaglineIndex]}</Text> */}
         </View>
 
-        {/* Text above the "Create Account" button */}
+        {/* Terms & conditions */}
         <Text style={styles.termsText}>
           By tapping ‘Sign in’ you agree to our Terms. Learn how
           we process your data in our Privacy Policy and Cookies Policy
         </Text>
 
-        {/* Buttons at the bottom */} 
+        {/* Create Account & Sign in buttons */} 
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.createAccountButton} onPress={() => {console.log('Sign In pressed'); navigation.navigate('createAcc');}}>
             <Text style={styles.createAccountButtonText}>CREATE ACCOUNT</Text>
@@ -61,7 +61,7 @@ const AppMenu = () => {
             <Text style={styles.signInButtonText}>SIGN IN</Text>
           </TouchableOpacity>
 
-          {/* Link below the "Sign In" button */}
+          {/* Help button */}
           <TouchableOpacity style={styles.troubleSigningInLink} onPress={() => console.log('Trouble signing in pressed')}>
             <Text style={styles.troubleSigningInText}>Trouble signing in?</Text>
           </TouchableOpacity>
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: '100%',
-    alignItems: 'center', // Center the buttons horizontally
+    alignItems: 'center',
   },
   createAccountButton: {
     backgroundColor: '#ffffff',
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 15,
     width: '70%',
-    marginTop: -10, // Add margin top to separate the buttons
+    marginTop: -10,
     marginBottom: 30,
     alignItems: 'center',
   },
@@ -143,12 +143,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   troubleSigningInLink: {
-    marginTop: 0, // Add margin top to separate the link from the Sign In button
+    marginTop: 0,
     marginBottom: 30,
   },
   troubleSigningInText: {
     color: '#ffffff',
-    textDecorationLine: 'underline', // Add underline to indicate it's a link
+    textDecorationLine: 'underline',
     fontWeight: 'bold',
   },
 });

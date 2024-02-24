@@ -7,29 +7,18 @@ import HeartIcon from '../assets/AdobeStock_heart_filled.png';
 import CalendarIcon from '../assets/AdobeStock_calendar.png';
 import ChatIcon from '../assets/AdobeStock_chat.png';
 import ProfileIcon from '../assets/AdobeStock_profile.png';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-const Tab = createBottomTabNavigator();
 
 const Chat = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      {/* App Logo at the top center */}
+      {/* App Logo */}
       <View style={styles.topBar}>
         <View style={styles.logoContainer}>
           <Image source={MeetLogoGradient} style={styles.logo} />
         </View>
       </View>
-
-        {/* Log out button in the middle */}
-        <TouchableOpacity
-        style={styles.logoutButton}
-        onPress={() => navigation.navigate('startUp')}
-      >
-        <Text style={styles.logoutText}>Log out</Text>
-      </TouchableOpacity>
 
       {/* Five buttons at the bottom for app navigation */}
       <View style={styles.bottom}>
@@ -59,14 +48,14 @@ const Chat = () => {
             style={styles.navigationButton}
             onPress={() => navigation.navigate('chat')}
           >
-            <Image source={ChatIcon} style={styles.buttonIcon} />
+            <Image source={ChatIcon} style={[styles.buttonIcon, { tintColor: '#79b8d3' }]} />
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.navigationButton}
             onPress={() => navigation.navigate('profile')}
           >
-            <Image source={ProfileIcon} style={[styles.buttonIcon, { tintColor: '#79b8d3' }]} />
+            <Image source={ProfileIcon} style={styles.buttonIcon} />
           </TouchableOpacity>
         </View>
       </View>

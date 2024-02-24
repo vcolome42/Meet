@@ -11,7 +11,7 @@ import homepage from './app/homepage';
 import profile from './app/profile';
 import chat from './app/chat';
 import map from './app/map';
-import saved from './app/saved';
+import TabContainer from './app/TabContainer';
 
 
 const Stack = createNativeStackNavigator();
@@ -26,8 +26,6 @@ export default function App() {
       <Stack.Screen name="homepage" component={homepage} />
       <Stack.Screen name="profile" component={profile} />
       <Stack.Screen name="chat" component={chat} /> 
-      <Stack.Screen name="map" component={map} />
-      <Stack.Screen name="saved" component={saved} />
       </Stack.Navigator>
     </NavigationContainer>
   );

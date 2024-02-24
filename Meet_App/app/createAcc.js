@@ -1,54 +1,116 @@
-
-
 import React from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-
-
-
-// Importing the logo and background image from the assets folder
-import MeetLogoWhite from '../assets/meet-logo-white.png';
-import BackgroundImage from '../assets/background-image.png';
-
-const AppMenu = () => {
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,} from 'react-native';
   
+import { useNavigation } from '@react-navigation/native';
+import backButtonIcon from '../assets/AdobeStock_backbutton.png';
+import {LinearGradient} from 'expo-linear-gradient';
+
+const CreateAcc = () => {
   const navigation = useNavigation();
+
   return (
-    <ImageBackground source={BackgroundImage} style={styles.backgroundImage}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
       <View style={styles.container}>
-        {/* App Logo and Tagline at the top */}
-        <View style={styles.logoContainer}> 
-          <Image
-            source={MeetLogoWhite}
-            style={styles.logo} 
-          />
-        </View> 
+        {/* Back button */}
+        <TouchableOpacity
+          onPress={() => {
+            console.log('Back button pressed');
+            navigation.navigate('startUp');
+          }}
+          style={styles.backButtonIcon}
+        >
+          <Image source={backButtonIcon} style={styles.backButtonIcon} />
+        </TouchableOpacity>
+
+        {/* Greeting */}
+        <Text style={styles.title}>Tell us about yourself...</Text>
+
+        {/* Form fields */}
+        <View style={styles.inputContainer}>
+          <TextInput placeholder="First name" style={styles.input} />
+          <TextInput placeholder="Last name" style={styles.input} />
+          <TextInput placeholder="Email Address" style={styles.input} />
+        </View>
+
+        {/* Next button */}
+        <View style={styles.bottom}></View>
+        <LinearGradient
+          colors={['#79b8d3', '#67bac7']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.nextButton}
+        >
+          <TouchableOpacity style={styles.nextButton} onPress={() => {console.log('Next button pressed'); navigation.navigate('homepage');}}>
+            <Text style={styles.nextButtonText}>Next</Text>
+          </TouchableOpacity>
+        </LinearGradient>
       </View>
-    </ImageBackground>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
-  backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center', 
-  },
   container: {
     flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
     padding: 16,
+    backgroundColor: '#eef1f7',
   },
-  logoContainer: {
+  backButtonIcon: {
+    height: 65,
+    width: 65,
+    marginTop: 20,
+    marginBottom: 60,
+    marginLeft: -10,
+    position: 'relative',
+    tintColor: '#aeb0b2',
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: '#2a2a2a',
+  },
+  inputContainer: {
+    marginBottom: 20,
+  },
+  input: {
+    backgroundColor: '#ffffff',
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 8,
+    height: 50,
+    fontSize: 18,
+  },
+
+  bottom: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+
+  nextButton: {
+    borderRadius: 15,
+    width: '100%',
+    height: 50,
     alignItems: 'center',
+    justifyContent: 'center',
   },
-  logo: {
-    width: 150,
-    height: 150,
-    resizeMode: 'contain',
-    marginTop: -10,
+  
+  nextButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
-export default AppMenu;
+export default CreateAcc;

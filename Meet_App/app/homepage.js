@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Picker, Text, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-// Import your images for the app logo and buttons from the assets folder
 import MeetLogoGradient from '../assets/meet-logo-gradient.png';
 import MapIcon from '../assets/AdobeStock_map.png';
 import HeartIcon from '../assets/AdobeStock_heart_filled.png';
@@ -12,10 +11,6 @@ import ProfileIcon from '../assets/AdobeStock_profile.png';
 import PlanEventImg from '../assets/plan_event.png';
 import FilterIcon from '../assets/AdobeStock_filter.png';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-const Tab = createBottomTabNavigator();
-
 const Home = () => {
     const navigation = useNavigation();
     const [selectedCity, setSelectedCity] = useState('Chicago');
@@ -23,7 +18,7 @@ const Home = () => {
 
     return (
       <View style={styles.container}>
-      {/* App Logo at the top center */}
+      {/* App Logo */}
       <View style={styles.topBar}>
         <View style={styles.logoContainer}>
           <Image source={MeetLogoGradient} style={styles.logo} />
@@ -31,6 +26,7 @@ const Home = () => {
       </View>
 
       {/* Displaying simple text "Chicago" */}
+      {/*Will change to a dropdown menu later*/} {/*TODO*/}
       <View style={styles.cityContainer}>
       <Text style={[styles.cityText, { alignSelf: 'flex-start' }]}>Chicago</Text>
       </View>
@@ -45,7 +41,7 @@ const Home = () => {
         />
       </View>
 
-       {/* Four smaller buttons */}
+       {/* Filter buttons */}
       <View style={styles.smallButtonContainer}>
         <TouchableOpacity style={[styles.smallButton]}>
           <Text style={styles.smallButtonText}>Filter</Text>
@@ -65,14 +61,14 @@ const Home = () => {
         </TouchableOpacity>
       </View>
 
-        {/* Texts below the four buttons */}
+        {/* Event stats & sorting */}
       <View style={styles.EventInfoTextContainer}>
         <Text style={styles.eventInfoTextLeft}>0 Events</Text>
         <Text style={styles.eventInfoTextRight}>Sort by relevance</Text>
       </View>
   
 
-      {/* Button below the search bar */}
+      {/* Event button to create events */}
       <TouchableOpacity
         style={styles.eventButton}
         onPress={() => {
@@ -83,9 +79,9 @@ const Home = () => {
         <Image source={PlanEventImg} style={styles.eventButtonImage} />
       </TouchableOpacity>
 
-      {/* Texts below the event button */}
+      {/* Explore section */}
       <View style={styles.eventTextContainer}>
-        <Text style={styles.eventsHeader}>Events</Text>
+        <Text style={styles.eventsHeader}>Explore</Text>
         <View style={styles.horizontalLine}></View>
       </View>
 
@@ -134,7 +130,7 @@ const Home = () => {
             </TouchableOpacity>
           </View>
         </View>
-        {/* <View style={styles.bottomBar}></View> */}
+        {/* <View style={styles.bottomBar}></View> */} {/*TODO: FIX SO THAT BUTTONS STAY AT BOTTOM*/}
       </View>
     );
   };

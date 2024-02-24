@@ -33,8 +33,8 @@ const Login = () => {
           <Image source={backButtonIcon} style={styles.backButtonIcon} />
         </TouchableOpacity>
 
-        {/* Title */}
-        <Text style={styles.title}>Let's get you settled...</Text>
+        {/* Greeting */}
+        <Text style={styles.title}>Let's get you settled in...</Text>
 
         {/* Login fields */}
         <View style={styles.inputContainer}>
